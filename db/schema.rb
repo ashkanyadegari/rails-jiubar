@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_085449) do
+ActiveRecord::Schema.define(version: 2020_11_23_095558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,37 @@ ActiveRecord::Schema.define(version: 2020_11_23_085449) do
     t.index ["user_id"], name: "index_caterings_on_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "catering_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["catering_id"], name: "index_items_on_catering_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "comments"
+    t.string "date"
+    t.string "time"
+    t.boolean "status"
+    t.bigint "catering_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["catering_id"], name: "index_reservations_on_catering_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "description"
+    t.integer "rating"
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "open_id"
     t.string "name"
@@ -59,4 +90,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_085449) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "caterings", "users"
+  add_foreign_key "items", "caterings"
+  add_foreign_key "reservations", "caterings"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "reservations"
 end
