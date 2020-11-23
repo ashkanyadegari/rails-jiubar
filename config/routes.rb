@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :caterings do
         resources :reservations
         resources :items
+        resources :reviews
       end
       resources :reservations do
         resources :reviews

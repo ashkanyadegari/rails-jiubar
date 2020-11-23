@@ -1,6 +1,10 @@
 class Api::V1::ReservationsController < Api::V1::BaseController
   def index
-    @reservations = Reservation.all
+    if params[:catering_id]
+      @reservations = Reservation.where(catering_id: params[:catering_id])
+    else
+      @reservations = Reservation.all
+    end
     render json: @reservations #Just for testing
   end
 
