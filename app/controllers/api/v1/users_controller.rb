@@ -6,7 +6,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def show
     @user = User.find(params[:id])
-    render json: @review #Just for testing
+    render json: @review #Just for testingg
   end
 
   def create
