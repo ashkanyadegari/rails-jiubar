@@ -5,9 +5,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :caterings do
         resources :reservations
+        resources :items
       end
       resources :reservations do
         resources :reviews
+      end
+      resources :users do
+        resources :reservations
       end
     end
   end
