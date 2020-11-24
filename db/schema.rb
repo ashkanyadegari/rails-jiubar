@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_095558) do
+ActiveRecord::Schema.define(version: 2020_11_24_045005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,13 +60,14 @@ ActiveRecord::Schema.define(version: 2020_11_23_095558) do
 
   create_table "reservations", force: :cascade do |t|
     t.string "comments"
-    t.string "date"
-    t.string "time"
     t.boolean "status"
     t.bigint "catering_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.time "time"
+    t.time "end_time"
     t.index ["catering_id"], name: "index_reservations_on_catering_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -86,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_095558) do
     t.string "phonenumber"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar"
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
