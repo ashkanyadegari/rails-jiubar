@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_045005) do
+ActiveRecord::Schema.define(version: 2020_11_25_071302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 2020_11_24_045005) do
 
   create_table "caterings", force: :cascade do |t|
     t.string "title"
-    t.string "description"
-    t.integer "price"
+    t.text "description"
+    t.float "price"
     t.string "address"
-    t.string "longitude"
-    t.string "latitude"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "longitude"
+    t.float "latitude"
     t.index ["user_id"], name: "index_caterings_on_user_id"
   end
 

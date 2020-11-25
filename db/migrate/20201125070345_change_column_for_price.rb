@@ -1,0 +1,5 @@
+class ChangeColumnForPrice < ActiveRecord::Migration[6.0]
+  def change
+    change_column :caterings, :price, :float
+  end
+end
