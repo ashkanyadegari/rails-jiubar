@@ -13,7 +13,7 @@ class Api::V1::CateringsController < Api::V1::BaseController
   end
 
   def show
-    render json: @catering #Just for testing
+    # render json: @catering #Just for testing
   end
 
   def create

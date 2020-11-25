@@ -9,10 +9,10 @@
 # User.destroy_all
 # Catering.destroy_all
 
-# catering = Catering.new(title: "Cocktail Training", description: "Very good catering service",
-# price: 199, address: "Block Street")
-# file = URI.open('https://giantbomb1.cbsistatic.com/uploads/original/9/99864/2419866-nes_console_set.png')
-# catering.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-# catering.user = user
-# catering.save
+catering = Catering.new(title: "Cocktail Training", description: "Very good catering service",
+price: 199, address: "Block Street")
+file = URI.open('https://giantbomb1.cbsistatic.com/uploads/original/9/99864/2419866-nes_console_set.png')
+catering.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+catering.user_id = 1
+catering.save
 
