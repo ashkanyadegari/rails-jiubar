@@ -1,6 +1,6 @@
 class Api::V1::CateringsController < Api::V1::BaseController
   before_action :set_catering, only: [:show, :update, :destroy]
-  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy, :image]
 
   def index
     if params[:user_id]
@@ -16,6 +16,12 @@ class Api::V1::CateringsController < Api::V1::BaseController
 
   def show
     # render json: @catering #Just for testing
+  end
+
+  def image
+    @catering = Catering.find(params["catering_id"])
+    @catering.photos.attach(params["img"])
+    @catering.save
   end
 
   def create

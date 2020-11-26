@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
     namespace :v1 do
       get "/id/:open_id", to: "users#get_id", as: :id
+      post "/image", to: "caterings#image"
       resources :caterings do
         resources :reservations
         resources :items
