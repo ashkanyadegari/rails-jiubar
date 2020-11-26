@@ -6,6 +6,8 @@ class Api::V1::CateringsController < Api::V1::BaseController
     if params[:user_id]
       @caterings = Catering.where(user_id: params[:user_id])
       render json: @caterings #Just for testing
+    elsif params[:query].present?
+      @caterings = Catering.search_by_title_and_description(params[:query])
     else
       @caterings = Catering.all
       render json: @caterings #Just for testing

@@ -8,7 +8,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def show
-    render json: @user #Just for testingg
+    render json: @user #Just for testing
   end
 
   def create
