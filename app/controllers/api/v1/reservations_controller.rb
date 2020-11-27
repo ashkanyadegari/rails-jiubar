@@ -22,6 +22,7 @@ class Api::V1::ReservationsController < Api::V1::BaseController
     @reservation = Reservation.new(reservation_params)
     @catering = Catering.find(@reservation.catering_id)
     @reservation.title = @catering.title
+    @reservation.errors.full_messages
     if @reservation.save
       render json: {reservation: @reservation, status: :created}
     else
