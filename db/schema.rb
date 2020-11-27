@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_082545) do
+ActiveRecord::Schema.define(version: 2020_11_27_044802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_082545) do
     t.date "date"
     t.time "time"
     t.time "end_time"
+    t.string "title"
     t.index ["catering_id"], name: "index_reservations_on_catering_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
